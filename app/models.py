@@ -42,7 +42,7 @@ class Store(models.Model):
 
 class Store_file(models.Model):
     s_id = models.ForeignKey(Store, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="store-image/%Y/%m/%d")
 
     def __str__(self):
         return str(self.s_id)
@@ -64,7 +64,7 @@ class Review_file(models.Model):
     r_id = models.ForeignKey(Review, on_delete=models.CASCADE, null=True)
     # filename = models.CharField(max_length=100, null=True)
     # original_name = models.CharField(max_length=100, null=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="store-image/%Y/%m/%d")
 
     def __str__(self):
         return str(self.r_id)
