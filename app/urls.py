@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from .serializers import MyRegistrationView
 from . import views
 
-urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
+urlpatterns = [
     path('rest-auth/registration/signup/', MyRegistrationView.as_view()),
     path('user/', views.UserList.as_view()),
     path('user/<int:pk>', views.UserDetail.as_view(), name='user-detail'),
@@ -34,6 +34,5 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [
 
 urlpatterns += [
     path('api-auth/', include('rest_framework.urls')),
-
-
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
